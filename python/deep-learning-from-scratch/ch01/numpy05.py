@@ -4,4 +4,4 @@ import numpy as np
 
 A = np.array([[1, 2], [3, 4]])
 B = np.array([10, 20])
-print(A * B)
+print(A * B)    # 연산시 B가 자동으로 2 * 2 행렬로 브로드캐스팅
