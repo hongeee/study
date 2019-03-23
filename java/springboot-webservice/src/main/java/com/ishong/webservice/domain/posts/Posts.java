@@ -11,12 +11,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /**
- * NoArgsConstructor : ±âº» »ı¼ºÀÚ ÀÚµ¿ Ãß°¡
- * - access = AccessLevel.PROTECTED : ±âº» »ı¼ºÀÚÀÇ Á¢±Ù ±ÇÇÑÀ» protected·Î Á¦ÇÑ
- * - Entity Å¬·¡½º¸¦ ÇÁ·ÎÁ§Æ® ÄÚµå»ó¿¡¼­ ±âº»»ı¼ºÀÚ·Î »ı¼ºÇÏ´Â °ÍÀº ¸·µÇ, JPA¿¡¼­ Entity Å¬·¡½º¸¦ »ı¼ºÇÏ´Â°ÍÀº Çã¿ëÇÏ±â À§ÇØ Ãß°¡
- * Getter : Å¬·¡½º ³» ¸ğµç ÇÊµåÀÇ Getter ¸Ş¼Òµå ÀÚµ¿ »ı¼º
- * Entity : Å×ÀÌºí°ú ¸µÅ©µÉ Å¬·¡½º
- * - ¾ğ´õ½ºÄÚ¾î ³×ÀÌ¹Ö(_)À¸·Î ÀÌ¸§À» ¸ÅÄª(ex. PostsManager.java -> post_manager table)
+ * NoArgsConstructor : ê¸°ë³¸ ìƒì„±ì ìë™ ì¶”ê°€
+ * - access = AccessLevel.PROTECTED : ê¸°ë³¸ ìƒì„±ìì˜ ì ‘ê·¼ ê¶Œí•œì„ protectedë¡œ ì œí•œ
+ * - Entity í´ë˜ìŠ¤ë¥¼ í”„ë¡œì íŠ¸ ì½”ë“œìƒì—ì„œ ê¸°ë³¸ìƒì„±ìë¡œ ìƒì„±í•˜ëŠ” ê²ƒì€ ë§‰ë˜, JPAì—ì„œ Entity í´ë˜ìŠ¤ë¥¼ ìƒì„±í•˜ëŠ”ê²ƒì€ í—ˆìš©í•˜ê¸° ìœ„í•´ ì¶”ê°€
+ * Getter : í´ë˜ìŠ¤ ë‚´ ëª¨ë“  í•„ë“œì˜ Getter ë©”ì†Œë“œ ìë™ ìƒì„±
+ * Entity : í…Œì´ë¸”ê³¼ ë§í¬ë  í´ë˜ìŠ¤
+ * - ì–¸ë”ìŠ¤ì½”ì–´ ë„¤ì´ë°(_)ìœ¼ë¡œ ì´ë¦„ì„ ë§¤ì¹­(ex. PostsManager.java -> post_manager table)
  
  * 
  * @author Inseok
@@ -28,16 +28,16 @@ import lombok.NoArgsConstructor;
 public class Posts {
 	
 	/**
-	 * Id : ÇØ´ç Å×ÀÌºíÀÇ PK ÇÊµå
-	 * GeneratedValue : PKÀÇ »ı¼º ±ÔÄ¢À¸·Î ±âº»°ªÀº Auto increment
+	 * Id : í•´ë‹¹ í…Œì´ë¸”ì˜ PK í•„ë“œ
+	 * GeneratedValue : PKì˜ ìƒì„± ê·œì¹™ìœ¼ë¡œ ê¸°ë³¸ê°’ì€ Auto increment
 	 */
 	@Id
 	@GeneratedValue
 	private Long id;
 	
 	/**
-	 * Column : Å×ÀÌºí ÄÃ·³, ¼±¾ğÇÏÁö ¾ÊÀ» °æ¿ì ¸ğµç ÇÊµå´Â ÄÃ·³
-	 * ±âº»°ª ¿Ü¿¡ Ãß°¡·Î º¯°æÀÌ ÇÊ¿äÇÑ ¿É¼ÇÀ» ¼±¾ğÇÏ±â À§ÇØ »ç¿ë(¹®ÀÚ¿­ÀÇ °æ¿ì ±âº»°ª VARCHAR(255) -> length = 500)
+	 * Column : í…Œì´ë¸” ì»¬ëŸ¼, ì„ ì–¸í•˜ì§€ ì•Šì„ ê²½ìš° ëª¨ë“  í•„ë“œëŠ” ì»¬ëŸ¼
+	 * ê¸°ë³¸ê°’ ì™¸ì— ì¶”ê°€ë¡œ ë³€ê²½ì´ í•„ìš”í•œ ì˜µì…˜ì„ ì„ ì–¸í•˜ê¸° ìœ„í•´ ì‚¬ìš©(ë¬¸ìì—´ì˜ ê²½ìš° ê¸°ë³¸ê°’ VARCHAR(255) -> length = 500)
 	 */
 	@Column(length = 500, nullable = false)
 	private String title;
@@ -49,9 +49,9 @@ public class Posts {
 
 	/**
 	 * Entity class
-	 * ½ÇÁ¦ DB Å×ÀÌºí°ú ¸ÅÄªµÉ Å¬·¡½º
-	 * Builder : ÇØ´ç Å¬·¡½ºÀÇ ºô´õÆĞÅÏ Å¬·¡½º¸¦ »ı¼º
-	 * - »ı¼ºÀÚ »ó´Ü¿¡ ¼±¾ğ ½Ã »ı¼ºÀÚ¿¡ Æ÷ÇÔµÈ ÇÊµå¸¸ ºô´õ¿¡ Æ÷ÇÔ
+	 * ì‹¤ì œ DB í…Œì´ë¸”ê³¼ ë§¤ì¹­ë  í´ë˜ìŠ¤
+	 * Builder : í•´ë‹¹ í´ë˜ìŠ¤ì˜ ë¹Œë”íŒ¨í„´ í´ë˜ìŠ¤ë¥¼ ìƒì„±
+	 * - ìƒì„±ì ìƒë‹¨ì— ì„ ì–¸ ì‹œ ìƒì„±ìì— í¬í•¨ëœ í•„ë“œë§Œ ë¹Œë”ì— í¬í•¨
 	 * @param title
 	 * @param content
 	 * @param author

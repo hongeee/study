@@ -3,9 +3,9 @@ package com.ishong.webservice.domain.posts;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * º¸Åë iBatis/MyBatis µî¿¡¼­ DAO¶ó°í ºÒ¸®´Â DB Layer Á¢±ÙÀÚ °³³ä 
- * JPA¿¡¼± Repository¶ó°í ºÎ¸£¸ç ÀÎÅÍÆäÀÌ½º·Î »ý¼º
- * ´Ü¼øÈ÷ ÀÎÅÍÆäÀÌ½º¸¦ »ý¼º ÈÄ JpaRepository<EntityÅ¬·¡½º, PKÅ¸ÀÔ>¸¦ »ó¼ÓÇÏ¸é ±âº»ÀûÀÎ CRUD ¸Þ¼Òµå°¡ ÀÚµ¿ »ý¼º
+ * ë³´í†µ iBatis/MyBatis ë“±ì—ì„œ DAOë¼ê³  ë¶ˆë¦¬ëŠ” DB Layer ì ‘ê·¼ìž ê°œë… 
+ * JPAì—ì„  Repositoryë¼ê³  ë¶€ë¥´ë©° ì¸í„°íŽ˜ì´ìŠ¤ë¡œ ìƒì„±
+ * ë‹¨ìˆœížˆ ì¸í„°íŽ˜ì´ìŠ¤ë¥¼ ìƒì„± í›„ JpaRepository<Entityí´ëž˜ìŠ¤, PKíƒ€ìž…>ë¥¼ ìƒì†í•˜ë©´ ê¸°ë³¸ì ì¸ CRUD ë©”ì†Œë“œê°€ ìžë™ ìƒì„±
  * @author Inseok
  *
  */
