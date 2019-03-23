@@ -2,7 +2,9 @@ package com.ishong.webservice.domain.posts;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.After;
@@ -13,8 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Posts Å¬·¡½º¿Í PostsRepository ÀÎÅÍÆäÀÌ½º »ı¼º ÈÄ
- * °ËÁõÇÏ±â À§ÇÑ Å×½ºÆ® ÄÚµå ÀÛ¼º
+ * Posts í´ë˜ìŠ¤ì™€ PostsRepository ì¸í„°í˜ì´ìŠ¤ ìƒì„± í›„
+ * ê²€ì¦í•˜ê¸° ìœ„í•œ í…ŒìŠ¤íŠ¸ ì½”ë“œ ì‘ì„±
  * @author Inseok
  *
  */
@@ -28,8 +30,8 @@ public class PostsRepositoryTests {
 	@After
 	public void cleanUp() {
 		/**
-		 * ÀÌÈÄ Å×½ºÆ® ÄÚµå¿¡ ¿µÇâÀ» ³¢Ä¡Áö ¾Ê±â À§ÇØ
-		 * Å×½ºÆ® Á¾·á ½Ã Repository¸¦ ¸ğµÎ ºñ¿ò
+		 * ì´í›„ í…ŒìŠ¤íŠ¸ ì½”ë“œì— ì˜í–¥ì„ ë¼ì¹˜ì§€ ì•Šê¸° ìœ„í•´
+		 * í…ŒìŠ¤íŠ¸ ì¢…ë£Œ ì‹œ Repositoryë¥¼ ëª¨ë‘ ë¹„ì›€
 		 */
 		postsRepository.deleteAll();
 	}
@@ -37,27 +39,46 @@ public class PostsRepositoryTests {
 	@Test
 	public void savePostAndloadPost() {
 		// given
-		// Å×½ºÆ® ±â¹İ È¯°æ ±¸Ãà
+		// í…ŒìŠ¤íŠ¸ ê¸°ë°˜ í™˜ê²½ êµ¬ì¶•
 		/**
-		 * Builder¸¦ »ç¿ëÇÏ±â À§ÇØ ÄÚµå ÀÛ¼º Áß ¿¡·¯ ¹ß»ı ½Ã
-		 * lombok ¼³Ä¡ ¿©ºÎ È®ÀÎ°ú ÇÁ·ÎÁ§Æ®¿¡ lombok.jar Æ÷ÇÔ ¿©ºÎ È®ÀÎ
-		 * ÀÇÁ¸¼º¿¡ lombok Ãß°¡ ¿Ü¿¡ lombok.jar ¼³Ä¡ °úÁ¤À» °ÅÃÄ¾ß ÇÔ
+		 * Builderë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ì½”ë“œ ì‘ì„± ì¤‘ ì—ëŸ¬ ë°œìƒ ì‹œ
+		 * lombok ì„¤ì¹˜ ì—¬ë¶€ í™•ì¸ê³¼ í”„ë¡œì íŠ¸ì— lombok.jar í¬í•¨ ì—¬ë¶€ í™•ì¸
+		 * ì˜ì¡´ì„±ì— lombok ì¶”ê°€ ì™¸ì— lombok.jar ì„¤ì¹˜ ê³¼ì •ì„ ê±°ì³ì•¼ í•¨
 		 */
 		postsRepository.save(Posts.builder()
-				.title("Å¸ÀÌÆ²")
-				.content("ÄÁÅÙÃ÷")
-				.author("È«±æµ¿")
+				.title("íƒ€ì´í‹€")
+				.content("ì»¨í…ì¸ ")
+				.author("í™ê¸¸ë™")
 				.build());
 		
 		// when
-		// Å×½ºÆ®ÇÏ°íÀÚ ÇÏ´Â ÇàÀ§ ¼±¾ğ
+		// í…ŒìŠ¤íŠ¸í•˜ê³ ì í•˜ëŠ” í–‰ìœ„ ì„ ì–¸
 		List<Posts> postsList = postsRepository.findAll();
 		
 		// then
-		// Å×½ºÆ® °á°ú °ËÁõ
+		// í…ŒìŠ¤íŠ¸ ê²°ê³¼ ê²€ì¦
 		Posts posts = postsList.get(0);
-		assertThat(posts.getTitle(), is("Å¸ÀÌÆ²"));
-		assertThat(posts.getContent(), is("ÄÁÅÙÃ÷"));
-		assertThat(posts.getAuthor(), is("È«±æµ¿"));
+		assertThat(posts.getTitle(), is("íƒ€ì´í‹€"));
+		assertThat(posts.getContent(), is("ì»¨í…ì¸ "));
+		assertThat(posts.getAuthor(), is("í™ê¸¸ë™"));
+	}
+	
+	@Test
+	public void baseTimeEntityPosts() {
+		// given
+		LocalDateTime now = LocalDateTime.now();
+		postsRepository.save(Posts.builder()
+				.title("í…ŒìŠ¤íŠ¸ ê²Œì‹œê¸€")
+				.content("í…ŒìŠ¤íŠ¸ ë³¸ë¬¸")
+				.author("í…ŒìŠ¤í„°")
+				.build());
+		
+		// when
+		List<Posts> postsList = postsRepository.findAll();
+		
+		// then
+		Posts posts = postsList.get(0);
+		assertTrue(posts.getCreateDate().isAfter(now));
+		assertTrue(posts.getModifiedDate().isAfter(now));
 	}
 }

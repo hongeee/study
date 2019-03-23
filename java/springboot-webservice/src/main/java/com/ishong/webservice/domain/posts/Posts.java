@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.ishong.webservice.domain.BaseTimeEntity;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,7 +27,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
 	
 	/**
 	 * Id : 해당 테이블의 PK 필드
