@@ -1,4 +1,4 @@
-package com.ishong.codility;
+package com.ishong.codility.lesson1;
 
 /**
  * A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
@@ -17,7 +17,6 @@ public class Task1 {
 	public int solution(int N) {
 		// write your code in Java SE 8
 		int max = 0;
-		int loopMax = 0;
 		int cur = 0;
 		int prev = 0;
 		String binStr = Integer.toBinaryString(N);
@@ -29,10 +28,10 @@ public class Task1 {
 				cur = binArr[i].length();
 				
 				if (cur > prev)
-					loopMax = cur;
+					max = cur;
 				
 				if (i == binArr.length - 1 && binStr.endsWith("0")) {
-					loopMax = prev;
+					max = prev;
 					break;
 				}
 				
@@ -41,18 +40,7 @@ public class Task1 {
 			}
 		}
 		
-		max = loopMax;
 //		System.out.println("result : " + max);
         return max;
-	}
-	
-	public static void main(String[] args) {
-		Task1 task = new Task1();
-		System.out.println(task.solution(1041));
-		System.out.println(task.solution(15));
-		System.out.println(task.solution(32));
-		System.out.println(task.solution(1610612737));
-		System.out.println(task.solution(328));
-		System.out.println(task.solution(1162));
 	}
 }
