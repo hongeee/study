@@ -1,4 +1,3 @@
-
 #Local 환경에서 H2를 DB로 사용하기 위해 추가
 #H2 DB 접속 시 JDBC URL : jdbc:h2:mem:testdb 를 명시해야 함
 spring:
